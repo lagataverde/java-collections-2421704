@@ -17,19 +17,22 @@ public class BookingService {
 		 * Returns a boolean that indicates if the Guest was
 		 * successfully placed in the room.
 		 */
-		
-		return false;
+		bookings.computeIfAbsent(room, r -> guest);
+		return bookings.containsValue(guest);
 	}
 
 	public double totalRevenue() {
-		
+
 		/*
 		 * 2. Returns a double that totals the rate of each Room booked
 		 * in the bookings Map.
 		 */
-		return 0;
+		return bookings.keySet()
+				.stream()
+				.mapToDouble(room -> room.getRate())
+				.sum();
 	}
-	
+
 	public Map<Room, Guest> getBookings() {
 		return bookings;
 	}
