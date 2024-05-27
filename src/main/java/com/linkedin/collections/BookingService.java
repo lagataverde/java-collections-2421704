@@ -17,8 +17,8 @@ public class BookingService {
 		 * Returns a boolean that indicates if the Guest was
 		 * successfully placed in the room.
 		 */
-		bookings.computeIfAbsent(room, r -> guest);
-		return bookings.containsValue(guest);
+
+		return bookings.putIfAbsent(room, guest) == null;
 	}
 
 	public double totalRevenue() {
