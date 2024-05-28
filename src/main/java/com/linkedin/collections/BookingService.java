@@ -17,7 +17,6 @@ public class BookingService {
 		 * Returns a boolean that indicates if the Guest was
 		 * successfully placed in the room.
 		 */
-
 		return bookings.putIfAbsent(room, guest) == null;
 	}
 
